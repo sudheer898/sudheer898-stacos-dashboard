@@ -1,5 +1,5 @@
 // S'Tacos offline support: the page and its libraries are kept so the kiosk and dashboard open without internet.
-const C = "stacos-v2";
+const C = "stacos-v3";
 self.addEventListener("install", e => { e.waitUntil(caches.open(C).then(c => c.addAll(["/", "/manifest.webmanifest", "/icon-192.png"]))); self.skipWaiting(); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== C).map(k => caches.delete(k))))); self.clients.claim(); });
 self.addEventListener("fetch", e => {
